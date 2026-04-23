@@ -241,35 +241,35 @@ Untuk menguji endpoint `GET /api/users/:id` dan `GET /api/users`, diperlukan beb
 
 ### Membuat user baru
 - Bisa melalui query SQL langsung di database seperti pada gambar berikut:
-<img src="sources/createNewUser.png" width="400"/>
+<img src="sources/createNewUser.png"/>
 
 - Atau bisa melalui `POST http://localhost:8080/api/users` dengan body JSON yang valid seperti pada gambar berikut:
-<img src="sources/createNewUserViaAPI.png" width="400"/>
+<img src="sources/createNewUserViaAPI.png"/>
 
 ### Login untuk mendapatkan token JWT
 Setelah user berhasil dibuat, kita bisa mendapatkan ID user tersebut untuk pengujian selanjutnya. Namun, sebelum bisa mendapatkan ID user, kita harus melakukan login terlebih dahulu untuk mendapatkan token JWT yang diperlukan untuk mengakses endpoint yang dilindungi.
 
 Untuk melakukan login, kita bisa melakukan request `POST http://localhost:8080/api/auth/login` dengan body JSON yang berisi email dan password user yang sudah dibuat sebelumnya. Contohnya seperti pada gambar berikut:
-<img src="sources/loginToGetToken.png" width="400"/>
+<img src="sources/loginToGetToken.png"/>
 
 ### Memasukkan token JWT pada header Authorization
 Setelah mendapatkan token JWT dari respons login, kita bisa menggunakan token tersebut untuk mengakses endpoint `GET /api/users/:id` dan `GET /api/users` dengan catatan token tersebut perlu dimasukkan ke dalam header `Authorization` dengan format `Bearer <token>`. Contohnya seperti pada gambar ini:
-<img src="sources/getUserByIDWithToken.png" width="400"/>
+<img src="sources/getUserByIDWithToken.png"/>
 
 Jika tidak memasukkan token atau token yang dimasukkan tidak valid, maka kita akan mendapatkan respons error seperti pada gambar berikut ini:
-<img src="sources/getUserByIDWithoutToken.png" width="400"/>
+<img src="sources/getUserByIDWithoutToken.png"/>
 
 ### Mengakses endpoint GET /api/users/:id 
 Jika kita ingin mendapatkan informasi user dengan ID (dalam bentuk UUID), maka kita bisa melakukan request `GET http://localhost:8080/api/users/{id}` dengan mengganti `{id}` dengan UUID user yang ingin diambil. Contohnya seperti pada gambar berikut: 
-<img src="sources/getUserByID.png" width="400"/>
+<img src="sources/getUserByID.png"/>
 
 Namun, jika ID yang dimasukkan tidak valid atau tidak ditemukan di database, maka kita akan mendapatkan respons error seperti pada gambar berikut: 
-<img src="sources/getUserByIDNotFound.png" width="400"/>
+<img src="sources/getUserByIDNotFound.png"/>
 
 ### Mengakses endpoint GET /api/users
 
 Jika kita ingin mendapatkan semua user yang ada di database dan sudah mendapatkan token JWT-nya, maka kita bisa melakukan request `GET http://localhost:8080/api/users`. Contohnya seperti pada gambar berikut:
-<img src="sources/getAllUsers.png" width="400"/>
+<img src="sources/getAllUsers.png"/>
 
 
 ## Model Database

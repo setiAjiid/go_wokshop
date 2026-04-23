@@ -53,5 +53,10 @@ func (ctrl *UserController) GetAllUsers(c *gin.Context) {
         return
     }
 
+    if len(users) == 0 {
+        utils.ErrorResponse(c, http.StatusNotFound, "Data user kosong")
+        return
+    }
+
     utils.SuccessResponse(c, http.StatusOK, "Berhasil ambil semua user", users)
 }

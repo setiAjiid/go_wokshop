@@ -30,3 +30,11 @@ func (s *UserService) CreateUser(req *dto.CreateUserRequest) (*entities.User, er
     err = s.repo.Create(user)
     return user, err
 }
+
+func (s *UserService) GetUserByID(id string) (*entities.User, error) {
+	return s.repo.FindByID(id)
+}
+
+func (s *UserService) GetAllUsers() ([]entities.User, error) {
+	return s.repo.FindAll()
+}

@@ -22,7 +22,7 @@ func NewJWTService() *JWTService {
 }
 
 type CustomClaim struct {
-	UserID uint   `json:"user_id"`
+	UserID string   `json:"user_id"`
 	Email  string `json:"email"`
 	Role   string `json:"role"`
 	jwt.RegisteredClaims
@@ -30,10 +30,10 @@ type CustomClaim struct {
 
 func (s *JWTService) GenerateToken(user *entities.User) (string, error) {
 	claims := CustomClaim{
-		user.ID,
-		user.Email,
-		user.Role,
-		jwt.RegisteredClaims{
+		UserID: user.ID.String(),   
+		Email:  user.Email,
+		Role:   user.Role,
+		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
